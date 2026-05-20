@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Contact | NEXUS MOTION - Video Editing & Motion Graphics Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366',
+                        secondary: '#6C63FF',
+                        accent: '#FFB347',
+                        softPink: '#FFF0F3',
+                        darkBg: '#0A0A0F',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.2s ease;
+            padding-top: 72px;
+        }
+        
+        /* Smooth Font Weights */
+        h1, h2, h3, h4, .heading {
+            font-weight: 600 !important;
+            letter-spacing: -0.02em;
+        }
+        p, .subheading, .text-body, .description {
+            font-weight: 400 !important;
+            line-height: 1.6;
+        }
+        
+        /* Gradient Text Definition */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Heading First Part - Light Mode Black, Dark Mode White */
+        .heading-first {
+            color: #1F2937;
+        }
+        body.dark .heading-first {
+            color: #FFFFFF;
+        }
+        
+        /* Dark Mode - Pure Black & Dark Grey (No Blue) */
+        body.dark {
+            background: #000000;
+            color: #E5E7EB;
+        }
+        body.dark .bg-white { background-color: #0A0A0A !important; }
+        body.dark .bg-gray-50, body.dark .bg-gray-100 { background-color: #111111 !important; }
+        body.dark .bg-softPink { background-color: #0F0F0F !important; }
+        body.dark .border-gray-200, body.dark .border-gray-100 { border-color: #1A1A1A !important; }
+        body.dark .text-gray-600, body.dark .text-gray-500 { color: #9CA3AF !important; }
+        body.dark .navbar { background: rgba(0, 0, 0, 0.98) !important; border-bottom-color: #1A1A1A !important; }
+        body.dark .dropdown-menu { background: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .dropdown-item { color: #E5E7EB !important; }
+        body.dark .mobile-menu { background: #000000 !important; }
+        body.dark .mobile-nav-link { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .mobile-submenu a { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .footer { background-color: #000000 !important; border-top-color: #FF3366 !important; }
+        body.dark .icon-btn { background: #111111 !important; border-color: #1A1A1A !important; color: #9CA3AF !important; }
+        body.dark .icon-btn:hover { background: #FF3366 !important; color: white !important; border-color: #FF3366 !important; }
+        body.dark .contact-card { background: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .contact-card:hover { border-color: #FF3366 !important; }
+        body.dark .form-input, body.dark .form-textarea, body.dark select.form-input { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .social-icon { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .social-icon:hover { background: #FF3366 !important; color: white !important; }
+        body.dark .map-placeholder { background: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .faq-item { border-color: #1A1A1A !important; background: #0A0A0A !important; }
+        body.dark .faq-item:hover { border-color: #FF3366 !important; }
+        
+        /* Logo Styles */
+        .logo-wrapper, .footer-logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .logo-icon, .footer-logo-icon {
+            display: inline-block;
+            color: #FF3366;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .logo-text, .footer-logo-text {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        @media (min-width: 1280px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.8rem; }
+            .logo-text, .footer-logo-text { font-size: 1.4rem; }
+        }
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.5rem; }
+            .logo-text, .footer-logo-text { font-size: 1.2rem; }
+        }
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        @media (max-width: 767px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+        }
+        @media (max-width: 768px) { .nav-container { padding: 0.6rem 1rem; } }
+        .nav-link {
+            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            background: transparent;
+            white-space: nowrap;
+            color: #1F2937;
+        }
+        body.dark .nav-link { color: #E5E7EB; }
+        @media (min-width: 1200px) { .nav-link { font-size: 14px; padding: 8px 16px; } }
+        .nav-link:hover, .nav-link.active { background: #FF3366; color: white !important; }
+        
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: 8px;
+            min-width: 160px;
+            background: white;
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15);
+            border: 1px solid #E5E7EB;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #1F2937;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover { background: #FF3366; color: white !important; }
+        
+        .auth-btn {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            color: white;
+            padding: 7px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @media (min-width: 1200px) { .auth-btn { padding: 8px 18px; font-size: 13px; } }
+        .auth-btn-outline { background: transparent; border: 1px solid #FF3366; color: #FF3366; }
+        .auth-btn-outline:hover { background: #FF3366; color: white; }
+        
+        .icon-btn {
+            width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB; flex-shrink: 0;
+            color: #1F2937;
+        }
+        @media (min-width: 1200px) { .icon-btn { width: 38px; height: 38px; } }
+        .icon-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FF3366;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .mobile-menu-btn:hover { background: #e02e5a; transform: scale(1.05); }
+        
+        @media (max-width: 1024px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-auth-buttons { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+            body { padding-top: 68px; }
+        }
+        @media (min-width: 1025px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-auth-buttons { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.25s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-menu {
+            position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 380px;
+            background: #FFFFFF; z-index: 2000; transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+        }
+        body.dark .mobile-menu { background: #000000; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .mobile-nav-link {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 18px; margin: 6px 0; border-radius: 18px;
+            font-weight: 500;
+            font-size: 15px; background: #F9FAFB;
+            border: 1px solid #E5E7EB; width: 100%; cursor: pointer; color: #1F2937;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        body.dark .mobile-nav-link { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-nav-link:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .mobile-submenu {
+            margin-left: 18px; padding-left: 16px; border-left: 2px solid #FF3366; display: none;
+        }
+        .mobile-submenu.open { display: block; }
+        .mobile-submenu a {
+            display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 6px 0;
+            border-radius: 16px; font-weight: 500;
+            font-size: 14px; text-decoration: none;
+            background: #FFFFFF; border: 1px solid #E5E7EB; color: #374151; transition: all 0.2s;
+        }
+        body.dark .mobile-submenu a { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-submenu a:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .control-btn {
+            background: #F3F4F6; border: 1px solid #E5E7EB; padding: 12px; border-radius: 16px;
+            font-weight: 500;
+            transition: 0.2s; cursor: pointer; width: 100%; text-align: center;
+        }
+        body.dark .control-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .control-btn:hover { background: #FF3366; color: white; }
+        .close-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: #F3F4F6; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB;
+        }
+        .close-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        body.dark .close-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        body.dark .close-btn:hover { background: #FF3366; color: white; }
+        
+        /* Contact Page Styles */
+        .contact-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 28px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -12px rgba(255,51,102,0.15);
+            border-color: #FF3366;
+        }
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-input, .form-textarea, select.form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #E5E7EB;
+            border-radius: 20px;
+            background: #FFFFFF;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input:focus, .form-textarea:focus, select.form-input:focus {
+            outline: none;
+            border-color: #FF3366;
+            box-shadow: 0 0 0 3px rgba(255,51,102,0.1);
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,51,102,0.3);
+        }
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: #1F2937;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            background: #FF3366;
+            color: white;
+            border-color: #FF3366;
+            transform: translateY(-3px);
+        }
+        .map-placeholder {
+            background: #F3F4F6;
+            border-radius: 28px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E5E7EB;
+            overflow: hidden;
+        }
+        
+        .hero-contact {
+            position: relative;
+            background-image: url('images/d6.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        body.dark .hero-contact {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/d6.jpg');
+            background-blend-mode: overlay;
+        }
+        
+        .fade-up { opacity: 0; transform: translateY(25px); transition: all 0.7s ease; }
+        .fade-up.reveal { opacity: 1; transform: translateY(0); }
+        
+        .faq-answer { display: none; }
+        .faq-answer.open { display: block; margin-top: 12px; }
+        .faq-question i { transition: transform 0.3s ease; }
+        .rotate-180 { transform: rotate(180deg); }
+        .faq-item {
+            border: 1px solid #E5E7EB;
+            border-radius: 24px;
+            padding: 20px;
+            transition: all 0.2s;
+            background: white;
+        }
+        .faq-item:hover { border-color: #FF3366; }
+        
+        .footer {
+            background-color: #FFFFFF;
+            border-top: 2px solid #FF3366;
+        }
+        body.dark .footer { background-color: #000000; }
+        .footer-link { transition: color 0.2s ease; text-decoration: none; }
+        .footer-link:hover { color: #FF3366; }
+        .footer-heading { color: #FF3366; font-weight: 600; }
+        .footer-icon { color: #FF3366; }
+        
+        @media (max-width: 640px) {
+            .contact-card { padding: 24px; }
+            .contact-icon { width: 48px; height: 48px; font-size: 20px; }
+            .social-icon { width: 38px; height: 38px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="flex items-center justify-between gap-3">
+                <a href="index.html" class="logo-wrapper">
+                    <i class="fas fa-film logo-icon"></i>
+                    <span class="logo-text">NEXUS MOTION</span>
+                </a>
+                
+                <div class="desktop-nav-links items-center gap-1">
+                    <div class="dropdown">
+                        <button class="nav-link flex items-center gap-1">Home <i class="fas fa-chevron-down text-xs"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="demoreel.html" class="nav-link">Demo Reel</a>
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="expertise.html" class="nav-link">Expertise</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </div>
+                
+                <div class="desktop-auth-buttons items-center gap-2">
+                    <button onclick="toggleThemeGlobal()" class="icon-btn"><i class="fas fa-moon"></i></button>
+                    <button onclick="toggleDirectionGlobal()" class="icon-btn"><i class="fas fa-arrow-right-arrow-left"></i></button>
+                    <a href="login.html" class="auth-btn auth-btn-outline">Login</a>
+                    <a href="signup.html" class="auth-btn">Sign Up</a>
+                </div>
+                
+                <button id="hamburgerBtn" class="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenuPanel">
+        <div class="mobile-header">
+            <a href="index.html" class="logo-wrapper" onclick="closeMobileMenu()">
+                <i class="fas fa-film logo-icon"></i>
+                <span class="logo-text">NEXUS MOTION</span>
+            </a>
+            <button id="closeMobileBtn" class="close-btn">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="px-5 pb-5">
+            <div class="flex flex-col gap-2">
+                <div>
+                    <div class="mobile-nav-link" onclick="toggleMobileSubmenu('homeSubmenu')">
+                        <span>HOME</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div id="homeSubmenu" class="mobile-submenu">
+                        <a href="index.html" onclick="closeMobileMenu()">Home 1</a>
+                        <a href="home2.html" onclick="closeMobileMenu()">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>About</span><i class="fas fa-arrow-right"></i></a>
+                <a href="demoreel.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Demo Reel</span><i class="fas fa-arrow-right"></i></a>
+                <a href="portfolio.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Portfolio</span><i class="fas fa-arrow-right"></i></a>
+                <a href="expertise.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Expertise</span><i class="fas fa-arrow-right"></i></a>
+                <a href="contact.html" class="mobile-nav-link active" onclick="closeMobileMenu()"><span>Contact</span><i class="fas fa-arrow-right"></i></a>
+                <div class="mt-3 pt-2 border-t border-gray-200 dark:border-gray-800">
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="login.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Login</span></a>
+                        <a href="signup.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Sign Up</span></a>
+                    </div>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button id="mobileThemeBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-moon"></i> Theme</button>
+                    <button id="mobileDirBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-arrow-right-arrow-left"></i> RTL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-contact relative min-h-[50vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/70 via-primary/50 to-secondary/40"></div>
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-5 sm:px-8 w-full py-16">
+            <div class="fade-up">
+                <span class="text-white font-semibold text-xs bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full inline-block mb-4">Get In Touch</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-white">
+                    <span class="text-white">Let's Create</span>
+                    <span class="text-white"> Something Amazing</span>
+                </h1>
+                <p class="text-white/90 text-base md:text-lg max-w-2xl mx-auto">Have a project in mind? We'd love to hear about it. Reach out and let's bring your vision to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+  <section class="py-16 px-5 sm:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+            <!-- Form -->
+            <div class="contact-card fade-up h-full">
+                <h2 class="text-3xl font-bold mb-2">
+                    <span class="heading-first">Send us a</span>
+                    <span class="gradient-text"> Message</span>
+                </h2>
+                <p class="text-gray-500 mb-5">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="mb-0">
+                            <input type="text" id="name" class="form-input" placeholder="Your Name *" required>
+                        </div>
+                        <div class="mb-0">
+                            <input type="email" id="email" class="form-input" placeholder="Email Address *" required>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <input type="tel" id="phone" class="form-input" placeholder="Phone Number">
+                    </div>
+                    <div class="mt-4">
+                        <select id="service" class="form-input">
+                            <option value="">Select Service</option>
+                            <option>Video Editing</option>
+                            <option>Motion Graphics</option>
+                            <option>Color Grading</option>
+                            <option>Commercial Ad</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="mt-4">
+                        <textarea id="message" rows="4" class="form-textarea" placeholder="Tell us about your project... *" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn mt-5">Send Message</button>
+                    <p class="text-xs text-gray-400 text-center mt-3">* Required fields. We respect your privacy.</p>
+                </form>
+            </div>
+            
+            <!-- Info Cards - Tighter layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 h-full">
+                <div class="contact-card fade-up p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="contact-icon w-12 h-12 text-xl flex-shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Visit Us</h3>
+                            <p class="text-gray-500 text-sm">Creative District, 123 Motion Lane<br>Los Angeles, CA 90028</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card fade-up p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="contact-icon w-12 h-12 text-xl flex-shrink-0"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Email & Phone</h3>
+                            <p class="text-gray-500 text-sm">hello@nexusmotion.com<br>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card fade-up p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="contact-icon w-12 h-12 text-xl flex-shrink-0"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Working Hours</h3>
+                            <p class="text-gray-500 text-sm">Mon-Fri: 9AM - 8PM<br>Sat: 10AM - 4PM | Sun: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card fade-up p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="contact-icon w-12 h-12 text-xl flex-shrink-0"><i class="fas fa-share-alt"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Connect With Us</h3>
+                            <div class="flex gap-2">
+                                <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-vimeo-v"></i></a>
+                                <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-behance"></i></a>
+                                <a href="#" class="social-icon w-9 h-9 text-sm"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Updated styles to match the tighter layout */
+.contact-card {
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -8px rgba(255,51,102,0.15);
+    border-color: #FF3366;
+}
+.contact-icon {
+    background: linear-gradient(135deg, #FF3366, #6C63FF);
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.form-input, .form-textarea, select.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+.form-input:focus, .form-textarea:focus, select.form-input:focus {
+    outline: none;
+    border-color: #FF3366;
+    box-shadow: 0 0 0 3px rgba(255,51,102,0.1);
+}
+.submit-btn {
+    background: linear-gradient(135deg, #FF3366, #6C63FF);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,51,102,0.3);
+}
+.social-icon {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: #1F2937;
+    text-decoration: none;
+}
+.social-icon:hover {
+    background: #FF3366;
+    color: white;
+    border-color: #FF3366;
+    transform: translateY(-2px);
+}
+body.dark .social-icon {
+    background: #0F0F0F;
+    border-color: #1A1A1A;
+    color: #E5E7EB;
+}
+body.dark .social-icon:hover {
+    background: #FF3366;
+    color: white;
+}
+@media (max-width: 640px) {
+    .contact-card { padding: 20px; }
+    .contact-icon { width: 40px; height: 40px; font-size: 16px; }
+}
+</style>
+
+    <!-- Map -->
+    <section class="py-12 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="map-placeholder fade-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.274042705!2d-118.69192047499999!3d34.0201613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="280" 
+                    style="border:0; display: block;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-5 sm:px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Frequently Asked</span>
+                    <span class="gradient-text"> Questions</span>
+                </h2>
+            </div>
+            <div class="space-y-4">
+                <div class="faq-item fade-up">
+                    <button onclick="toggleFAQ(this)" class="faq-question w-full text-left flex justify-between items-center font-semibold text-lg">
+                        What's the typical turnaround time?
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer text-gray-500">Standard projects take 5-7 business days. Rush delivery available in 48 hours for an additional fee.</div>
+                </div>
+                <div class="faq-item fade-up">
+                    <button onclick="toggleFAQ(this)" class="faq-question w-full text-left flex justify-between items-center font-semibold text-lg">
+                        Do you offer revisions?
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer text-gray-500">Yes! We offer up to 3 rounds of revisions to ensure you're 100% satisfied with the final result.</div>
+                </div>
+                <div class="faq-item fade-up">
+                    <button onclick="toggleFAQ(this)" class="faq-question w-full text-left flex justify-between items-center font-semibold text-lg">
+                        What formats do you deliver?
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer text-gray-500">MP4, MOV, AVI, GIF, and optimized formats for YouTube, Instagram, TikTok, and broadcast.</div>
+                </div>
+                <div class="faq-item fade-up">
+                    <button onclick="toggleFAQ(this)" class="faq-question w-full text-left flex justify-between items-center font-semibold text-lg">
+                        How do I get a quote?
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer text-gray-500">Fill out the contact form with your project details, and we'll send you a custom quote within 24 hours.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div><a href="index.html" class="footer-logo-wrapper"><i class="fas fa-film footer-logo-icon"></i><span class="footer-logo-text">NEXUS MOTION</span></a><p class="text-sm text-gray-500 mt-3">Freelance video editor & motion designer</p><div class="flex gap-3 mt-4"><i class="fab fa-instagram text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-vimeo text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-linkedin-in text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i></div></div>
+                <div><h4 class="footer-heading mb-3">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="demoreel.html" class="text-gray-500 hover:text-primary transition footer-link">Demo Reel</a></li><li><a href="portfolio.html" class="text-gray-500 hover:text-primary transition footer-link">Portfolio</a></li><li><a href="expertise.html" class="text-gray-500 hover:text-primary transition footer-link">Expertise</a></li><li><a href="contact.html" class="text-gray-500 hover:text-primary transition footer-link">Contact</a></li></ul></div>
+                <div><h4 class="footer-heading mb-3">Services</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">Video Editing</li><li class="text-gray-500">Motion Graphics</li><li class="text-gray-500">Color Grading</li></ul></div>
+                <div><h4 class="footer-heading mb-3">Contact</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">hello@nexusmotion.com</li><li class="text-gray-500">Mon-Fri: 9AM - 8PM</li><li class="text-gray-500">Remote Worldwide</li></ul></div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400"><p>© 2025 NEXUS MOTION — All rights reserved</p><div class="flex gap-4 mt-2 md:mt-0"><a href="#" class="hover:text-primary transition footer-link">Privacy</a><a href="#" class="hover:text-primary transition footer-link">Terms</a></div></div>
+        </div>
+    </footer>
+
+    <script>
+        let isDark = false;
+        function applyTheme() { if(isDark) document.body.classList.add('dark'); else document.body.classList.remove('dark'); }
+        function toggleThemeGlobal() { isDark = !isDark; localStorage.setItem('nexusTheme', isDark ? 'dark' : 'light'); applyTheme(); }
+        function toggleDirectionGlobal() { const newDir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; document.documentElement.dir = newDir; }
+        
+        function toggleFAQ(btn) { 
+            const answer = btn.parentElement.querySelector('.faq-answer'); 
+            answer.classList.toggle('open'); 
+            btn.querySelector('i').classList.toggle('rotate-180'); 
+        }
+        
+        function handleContactSubmit(e) { 
+            e.preventDefault(); 
+            alert("Thank you for reaching out! We'll get back to you within 24 hours."); 
+            document.getElementById('contactForm').reset(); 
+        }
+        
+        const mobilePanel = document.getElementById('mobileMenuPanel');
+        const overlay = document.getElementById('mobileOverlay');
+        function openMobileMenu() { mobilePanel.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMobileMenu() { mobilePanel.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const closeBtn = document.getElementById('closeMobileBtn');
+        if(hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
+        if(closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
+        if(overlay) overlay.addEventListener('click', closeMobileMenu);
+        
+        window.toggleMobileSubmenu = function(id) { const el = document.getElementById(id); if(el) el.classList.toggle('open'); };
+        
+        const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+        const mobileDirBtn = document.getElementById('mobileDirBtn');
+        if(mobileThemeBtn) mobileThemeBtn.addEventListener('click', () => { toggleThemeGlobal(); closeMobileMenu(); });
+        if(mobileDirBtn) mobileDirBtn.addEventListener('click', () => { toggleDirectionGlobal(); closeMobileMenu(); });
+        
+        const savedTheme = localStorage.getItem('nexusTheme');
+        if(savedTheme === 'dark') { isDark = true; applyTheme(); }
+        
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); }); }, { threshold: 0.2 });
+        faders.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

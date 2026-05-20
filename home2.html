@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Home 2 | NEXUS MOTION - Creative Video Editing Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366',
+                        secondary: '#6C63FF',
+                        accent: '#FFB347',
+                        softPink: '#FFF0F3',
+                        darkBg: '#0A0A0F',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.2s ease;
+            padding-top: 72px;
+        }
+        
+        /* Smooth Font Weights */
+        h1, h2, h3, h4, .heading {
+            font-weight: 600 !important;
+            letter-spacing: -0.02em;
+        }
+        p, .subheading, .text-body, .description {
+            font-weight: 400 !important;
+            line-height: 1.6;
+        }
+        
+        /* Gradient Text Definition */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Heading First Part - Light Mode Black, Dark Mode White */
+        .heading-first {
+            color: #1F2937;
+        }
+        body.dark .heading-first {
+            color: #FFFFFF;
+        }
+        
+        /* Dark Mode - Pure Black & Dark Grey */
+        body.dark {
+            background: #000000;
+            color: #E5E7EB;
+        }
+        body.dark .bg-white { background-color: #0A0A0A !important; }
+        body.dark .bg-gray-50, body.dark .bg-gray-100 { background-color: #111111 !important; }
+        body.dark .bg-softPink { background-color: #0F0F0F !important; }
+        body.dark .border-gray-200, body.dark .border-gray-100 { border-color: #1A1A1A !important; }
+        body.dark .text-gray-600, body.dark .text-gray-500 { color: #9CA3AF !important; }
+        body.dark .service-card, body.dark .work-card, body.dark .testimonial-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .service-card:hover, body.dark .work-card:hover, body.dark .testimonial-card:hover { border-color: #FF3366 !important; }
+        body.dark .stat-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .stat-card:hover { background: rgba(255,51,102,0.1) !important; }
+        body.dark .navbar { background: rgba(0, 0, 0, 0.98) !important; border-bottom-color: #1A1A1A !important; }
+        body.dark .dropdown-menu { background: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .dropdown-item { color: #E5E7EB !important; }
+        body.dark .mobile-menu { background: #000000 !important; }
+        body.dark .mobile-nav-link { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .mobile-submenu a { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .footer { background-color: #000000 !important; border-top-color: #FF3366 !important; }
+        body.dark .icon-btn { background: #111111 !important; border-color: #1A1A1A !important; color: #9CA3AF !important; }
+        body.dark .icon-btn:hover { background: #FF3366 !important; color: white !important; border-color: #FF3366 !important; }
+        body.dark .behind-scenes-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        
+        /* Logo Styles */
+        .logo-wrapper, .footer-logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .logo-icon, .footer-logo-icon {
+            display: inline-block;
+            color: #FF3366;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .logo-text, .footer-logo-text {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        @media (min-width: 1280px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.8rem; }
+            .logo-text, .footer-logo-text { font-size: 1.4rem; }
+        }
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.5rem; }
+            .logo-text, .footer-logo-text { font-size: 1.2rem; }
+        }
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        @media (max-width: 767px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+        }
+        @media (max-width: 768px) { .nav-container { padding: 0.6rem 1rem; } }
+        .nav-link {
+            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            background: transparent;
+            white-space: nowrap;
+            color: #1F2937;
+        }
+        body.dark .nav-link { color: #E5E7EB; }
+        @media (min-width: 1200px) { .nav-link { font-size: 14px; padding: 8px 16px; } }
+        .nav-link:hover, .nav-link.active { background: #FF3366; color: white !important; }
+        
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: 8px;
+            min-width: 160px;
+            background: white;
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15);
+            border: 1px solid #E5E7EB;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #1F2937;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover { background: #FF3366; color: white !important; }
+        
+        .auth-btn {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            color: white;
+            padding: 7px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @media (min-width: 1200px) { .auth-btn { padding: 8px 18px; font-size: 13px; } }
+        .auth-btn-outline { background: transparent; border: 1px solid #FF3366; color: #FF3366; }
+        .auth-btn-outline:hover { background: #FF3366; color: white; }
+        
+        .icon-btn {
+            width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB; flex-shrink: 0;
+            color: #1F2937;
+        }
+        @media (min-width: 1200px) { .icon-btn { width: 38px; height: 38px; } }
+        .icon-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FF3366;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .mobile-menu-btn:hover { background: #e02e5a; transform: scale(1.05); }
+        
+        @media (max-width: 1024px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-auth-buttons { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+            body { padding-top: 68px; }
+        }
+        @media (min-width: 1025px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-auth-buttons { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.25s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-menu {
+            position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 380px;
+            background: #FFFFFF; z-index: 2000; transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+        }
+        body.dark .mobile-menu { background: #000000; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .mobile-nav-link {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 18px; margin: 6px 0; border-radius: 18px;
+            font-weight: 500;
+            font-size: 15px; background: #F9FAFB;
+            border: 1px solid #E5E7EB; width: 100%; cursor: pointer; color: #1F2937;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        body.dark .mobile-nav-link { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-nav-link:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .mobile-submenu {
+            margin-left: 18px; padding-left: 16px; border-left: 2px solid #FF3366; display: none;
+        }
+        .mobile-submenu.open { display: block; }
+        .mobile-submenu a {
+            display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 6px 0;
+            border-radius: 16px; font-weight: 500;
+            font-size: 14px; text-decoration: none;
+            background: #FFFFFF; border: 1px solid #E5E7EB; color: #374151; transition: all 0.2s;
+        }
+        body.dark .mobile-submenu a { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-submenu a:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .control-btn {
+            background: #F3F4F6; border: 1px solid #E5E7EB; padding: 12px; border-radius: 16px;
+            font-weight: 500;
+            transition: 0.2s; cursor: pointer; width: 100%; text-align: center;
+        }
+        body.dark .control-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .control-btn:hover { background: #FF3366; color: white; }
+        .close-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: #F3F4F6; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB;
+        }
+        .close-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        body.dark .close-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        body.dark .close-btn:hover { background: #FF3366; color: white; }
+        
+        /* Hero Section */
+        .hero-home2 {
+            position: relative;
+            min-height: 80vh;
+            background-image: url('images/h5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+        }
+        body.dark .hero-home2 {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/h5.jpg');
+            background-blend-mode: overlay;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,51,102,0.85), rgba(108,99,255,0.75));
+        }
+        
+        /* Cards */
+        .service-card, .work-card, .testimonial-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 28px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover, .work-card:hover, .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(255,51,102,0.25);
+            border-color: #FF3366;
+        }
+        
+        .behind-scenes-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .behind-scenes-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF3366;
+            box-shadow: 0 20px 30px -12px rgba(255,51,102,0.2);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 24px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            background: white;
+            border: 1px solid #E5E7EB;
+        }
+        .stat-card:hover { transform: translateY(-5px); border-color: #FF3366; background: rgba(255,51,102,0.05); }
+        
+        .fade-up { opacity: 0; transform: translateY(25px); transition: all 0.7s ease; }
+        .fade-up.reveal { opacity: 1; transform: translateY(0); }
+        
+        [dir="rtl"] .mobile-menu { right: auto; left: 0; transform: translateX(-100%); }
+        [dir="rtl"] .mobile-menu.open { transform: translateX(0); }
+        [dir="rtl"] .dropdown-menu { right: 0; left: auto; }
+        
+        .footer {
+            background-color: #FFFFFF;
+            border-top: 2px solid #FF3366;
+        }
+        body.dark .footer { background-color: #000000; }
+        .footer-link { transition: color 0.2s ease; text-decoration: none; }
+        .footer-link:hover { color: #FF3366; }
+        .footer-heading { color: #FF3366; font-weight: 600; }
+        
+        .cta-gradient {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            border-radius: 32px;
+        }
+        
+        .client-logo {
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        .client-logo:hover { opacity: 1; }
+        
+        @media (max-width: 640px) {
+            .service-card { padding: 20px; }
+            .stat-card { padding: 16px; }
+            .behind-scenes-card img { height: 220px; }
+        }
+
+        /* Active dropdown item styling */
+.dropdown-item.active {
+    background: #FF3366 !important;
+    color: white !important;
+}
+
+.dropdown-item.active i {
+    color: white !important;
+}
+
+/* Active dropdown button styling - keeps Home button highlighted */
+.dropdown .nav-link.active {
+    background: #FF3366 !important;
+    color: white !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="flex items-center justify-between gap-3">
+                <a href="index.html" class="logo-wrapper">
+                    <i class="fas fa-film logo-icon"></i>
+                    <span class="logo-text">NEXUS MOTION</span>
+                </a>
+                
+                <div class="desktop-nav-links items-center gap-1">
+                    <div class="dropdown">
+                        <button class="nav-link flex items-center gap-1">Home <i class="fas fa-chevron-down text-xs"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home2.html" class="dropdown-item active">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="demoreel.html" class="nav-link">Demo Reel</a>
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="expertise.html" class="nav-link">Expertise</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="desktop-auth-buttons items-center gap-2">
+                    <button onclick="toggleThemeGlobal()" class="icon-btn"><i class="fas fa-moon"></i></button>
+                    <button onclick="toggleDirectionGlobal()" class="icon-btn"><i class="fas fa-arrow-right-arrow-left"></i></button>
+                    <a href="login.html" class="auth-btn auth-btn-outline">Login</a>
+                    <a href="signup.html" class="auth-btn">Sign Up</a>
+                </div>
+                
+                <button id="hamburgerBtn" class="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenuPanel">
+        <div class="mobile-header">
+            <a href="index.html" class="logo-wrapper" onclick="closeMobileMenu()">
+                <i class="fas fa-film logo-icon"></i>
+                <span class="logo-text">NEXUS MOTION</span>
+            </a>
+            <button id="closeMobileBtn" class="close-btn">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="px-5 pb-5">
+            <div class="flex flex-col gap-2">
+                <div>
+                    <div class="mobile-nav-link" onclick="toggleMobileSubmenu('homeSubmenu')">
+                        <span>HOME</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div id="homeSubmenu" class="mobile-submenu">
+                        <a href="index.html" onclick="closeMobileMenu()">Home 1</a>
+                        <a href="home2.html" onclick="closeMobileMenu()">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>About</span><i class="fas fa-arrow-right"></i></a>
+                <a href="demoreel.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Demo Reel</span><i class="fas fa-arrow-right"></i></a>
+                <a href="portfolio.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Portfolio</span><i class="fas fa-arrow-right"></i></a>
+                <a href="expertise.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Expertise</span><i class="fas fa-arrow-right"></i></a>
+                <a href="contact.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Contact</span><i class="fas fa-arrow-right"></i></a>
+                <div class="mt-3 pt-2 border-t border-gray-200 dark:border-gray-800">
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="login.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Login</span></a>
+                        <a href="signup.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Sign Up</span></a>
+                    </div>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button id="mobileThemeBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-moon"></i> Theme</button>
+                    <button id="mobileDirBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-arrow-right-arrow-left"></i> RTL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-home2">
+        <div class="hero-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto text-center px-5 sm:px-8 w-full py-20">
+            <div class="fade-up">
+                <span class="text-white font-semibold text-xs bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full inline-block mb-4">Creative Studio</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-5 text-white leading-tight">
+                    <span class="text-white">Visual Stories That</span><br>
+                    <span class="text-white"> Leave a Mark</span>
+                </h1>
+                <p class="text-white/90 text-base md:text-lg max-w-2xl mx-auto">We craft cinematic edits, motion graphics, and high-impact visuals that elevate brands and captivate audiences worldwide.</p>
+                <div class="flex flex-wrap gap-4 justify-center mt-8">
+                    <a href="demoreel.html" class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-gray-100 transition">View Showreel</a>
+                    <a href="contact.html" class="inline-flex items-center gap-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition">Start Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">What We Do</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-3">
+                    <span class="heading-first">Creative</span>
+                    <span class="gradient-text"> Services</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">Professional editing and motion design tailored to your brand</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-film text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">Cinematic Editing</h3><p class="text-gray-500 text-sm">Professional video editing with cinematic pacing, transitions, and emotional storytelling.</p></div>
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-magic text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">Motion Graphics</h3><p class="text-gray-500 text-sm">Dynamic animations, kinetic typography, and 2D/3D motion design.</p></div>
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-palette text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">Color Grading</h3><p class="text-gray-500 text-sm">Professional color correction and cinematic grading that elevates every frame.</p></div>
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-chart-line text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">Commercial Ads</h3><p class="text-gray-500 text-sm">High-converting advertisements optimized for TV, YouTube, and social platforms.</p></div>
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fab fa-youtube text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">YouTube Content</h3><p class="text-gray-500 text-sm">Engaging edits optimized for retention, storytelling, and audience growth.</p></div>
+                <div class="service-card p-6 fade-up"><div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-4"><i class="fab fa-tiktok text-2xl text-primary"></i></div><h3 class="text-lg font-semibold mb-2">Social Reels</h3><p class="text-gray-500 text-sm">Vertical viral edits for TikTok, Instagram Reels, and YouTube Shorts.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="py-16 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                <div class="stat-card fade-up"><i class="fas fa-video text-4xl text-primary mb-2"></i><p class="text-3xl md:text-4xl font-bold" data-count="587">0</p><p class="text-sm text-gray-500">Projects Completed</p></div>
+                <div class="stat-card fade-up"><i class="fas fa-users text-4xl text-primary mb-2"></i><p class="text-3xl md:text-4xl font-bold" data-count="128">0</p><p class="text-sm text-gray-500">Happy Clients</p></div>
+                <div class="stat-card fade-up"><i class="fas fa-chart-line text-4xl text-primary mb-2"></i><p class="text-3xl md:text-4xl font-bold" data-count="125">0</p><p class="text-sm text-gray-500">M+ Views</p></div>
+                <div class="stat-card fade-up"><i class="fas fa-clock text-4xl text-primary mb-2"></i><p class="text-3xl md:text-4xl font-bold" data-count="48">0</p><p class="text-sm text-gray-500">Hour Delivery</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes Section - 2 Images -->
+    <section class="py-16 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Behind the Scenes</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Our Creative</span>
+                    <span class="gradient-text"> Process</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">A glimpse into our studio and editing workflow</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="behind-scenes-card group">
+                    <img src="images/d1.jpg" alt="Editing Suite" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Professional Editing Suite</h3>
+                        <p class="text-gray-500 text-sm">State-of-the-art workspace for cinematic editing</p>
+                    </div>
+                </div>
+                <div class="behind-scenes-card group">
+                    <img src="images/d2.jpg" alt="Motion Graphics Studio" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Motion Graphics Studio</h3>
+                        <p class="text-gray-500 text-sm">Where creativity meets technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Work Showcase -->
+    <section class="py-20 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Portfolio</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-3">
+                    <span class="heading-first">Recent</span>
+                    <span class="gradient-text"> Creations</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="work-card overflow-hidden fade-up"><img src="images/h4.jpg" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Luxury Auto Commercial</h3><p class="text-gray-500 text-sm">Cinematic editing + color grading</p></div></div>
+                <div class="work-card overflow-hidden fade-up"><img src="images/h5.jpg" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Fashion Lookbook 2025</h3><p class="text-gray-500 text-sm">Slow-motion + atmospheric sound</p></div></div>
+                <div class="work-card overflow-hidden fade-up"><img src="images/h6.jpg" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Tech Summit Motion</h3><p class="text-gray-500 text-sm">Motion graphics + 3D titles</p></div></div>
+            </div>
+            <div class="text-center mt-8"><a href="portfolio.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition">View All Work →</a></div>
+        </div>
+    </section>
+
+    <!-- Equipment & Tools Section - 2 Images -->
+    <section class="py-16 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-white/80 px-3 py-1 rounded-full">Our Setup</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Professional</span>
+                    <span class="gradient-text"> Equipment</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">High-end gear for premium quality output</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="behind-scenes-card group">
+                    <img src="images/q1.jpg" alt="Camera Setup" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Cinema Camera Setup</h3>
+                        <p class="text-gray-500 text-sm">RED Komodo + Sony FX6 Cinema Cameras</p>
+                    </div>
+                </div>
+                <div class="behind-scenes-card group">
+                    <img src="images/q2.jpg" alt="Audio Setup" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Professional Audio Lab</h3>
+                        <p class="text-gray-500 text-sm">Industry-standard sound mixing suite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div class="fade-up"><img src="images/h3.jpg" class="rounded-3xl w-full shadow-xl"></div>
+                <div class="fade-up"><span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Why Us</span><h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">We Don't Just Edit — We <span class="gradient-text">Storytell</span></h2><p class="text-gray-500 mb-5">Every project is treated with creative precision, technical excellence, and a deep understanding of what makes content resonate.</p>
+                <div class="space-y-2"><div class="flex items-center gap-3"><i class="fas fa-check-circle text-primary text-lg"></i><span>500+ successful projects delivered</span></div><div class="flex items-center gap-3"><i class="fas fa-check-circle text-primary text-lg"></i><span>120M+ total organic views generated</span></div><div class="flex items-center gap-3"><i class="fas fa-check-circle text-primary text-lg"></i><span>98% client satisfaction rate</span></div><div class="flex items-center gap-3"><i class="fas fa-check-circle text-primary text-lg"></i><span>48-hour rush delivery available</span></div></div>
+                <a href="about.html" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold mt-6 hover:bg-primary/90 transition">Learn More →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12"><span class="text-primary font-semibold text-xs bg-white/80 px-3 py-1 rounded-full">Testimonials</span><h2 class="text-3xl md:text-5xl font-bold mt-3"><span class="heading-first">What</span><span class="gradient-text"> Clients Say</span></h2></div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="testimonial-card p-5 fade-up"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3">"NEXUS MOTION elevated our brand visuals beyond expectations. The cinematic quality was exceptional."</p><div class="font-semibold text-sm">David Kim</div><div class="text-xs text-gray-500">Creative Director</div></div>
+                <div class="testimonial-card p-5 fade-up"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3">"The motion graphics work transformed our entire campaign. Fast, professional, and incredibly talented."</p><div class="font-semibold text-sm">Jessica Chen</div><div class="text-xs text-gray-500">Marketing Lead</div></div>
+                <div class="testimonial-card p-5 fade-up"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3">"Best editing experience I've had. Our YouTube retention increased by 40% after working with them."</p><div class="font-semibold text-sm">Marcus Lee</div><div class="text-xs text-gray-500">Content Creator</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-5 sm:px-8">
+        <div class="max-w-5xl mx-auto cta-gradient rounded-3xl p-8 md:p-10 text-center">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">Ready to Create Something Amazing?</h2>
+            <p class="text-white/90 text-base md:text-lg mb-5 max-w-lg mx-auto">Let's bring your vision to life with cinematic quality and viral-worthy edits.</p>
+            <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-primary px-6 py-2.5 rounded-xl font-semibold hover:shadow-lg transition">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div><a href="index.html" class="footer-logo-wrapper"><i class="fas fa-film footer-logo-icon"></i><span class="footer-logo-text">NEXUS MOTION</span></a><p class="text-sm text-gray-500 mt-3">Freelance video editor & motion designer</p><div class="flex gap-3 mt-4"><i class="fab fa-instagram text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-vimeo text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-linkedin-in text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i></div></div>
+                <div><h4 class="footer-heading mb-3">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="demoreel.html" class="text-gray-500 hover:text-primary transition footer-link">Demo Reel</a></li><li><a href="portfolio.html" class="text-gray-500 hover:text-primary transition footer-link">Portfolio</a></li><li><a href="expertise.html" class="text-gray-500 hover:text-primary transition footer-link">Expertise</a></li><li><a href="contact.html" class="text-gray-500 hover:text-primary transition footer-link">Contact</a></li></ul></div>
+                <div><h4 class="footer-heading mb-3">Services</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">Video Editing</li><li class="text-gray-500">Motion Graphics</li><li class="text-gray-500">Color Grading</li></ul></div>
+                <div><h4 class="footer-heading mb-3">Contact</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">hello@nexusmotion.com</li><li class="text-gray-500">Mon-Fri: 9AM - 8PM</li><li class="text-gray-500">Remote Worldwide</li></ul></div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400"><p>© 2025 NEXUS MOTION — All rights reserved</p><div class="flex gap-4 mt-2 md:mt-0"><a href="#" class="hover:text-primary transition footer-link">Privacy</a><a href="#" class="hover:text-primary transition footer-link">Terms</a></div></div>
+        </div>
+    </footer>
+
+   <script>
+    let isDark = false;
+    function applyTheme() { if(isDark) document.body.classList.add('dark'); else document.body.classList.remove('dark'); }
+    function toggleThemeGlobal() { isDark = !isDark; localStorage.setItem('nexusTheme', isDark ? 'dark' : 'light'); applyTheme(); }
+    function toggleDirectionGlobal() { const newDir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; document.documentElement.dir = newDir; }
+    
+    // Set active state for Home dropdown button
+    function setActiveHomeButton() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const dropdownBtn = document.querySelector('.dropdown > .nav-link');
+        
+        // If we're on index.html or home2.html, highlight the Home button
+        if (currentPage === 'index.html' || currentPage === 'home2.html') {
+            if (dropdownBtn) {
+                dropdownBtn.classList.add('active');
+            }
+        }
+    }
+    
+    const mobilePanel = document.getElementById('mobileMenuPanel');
+    const overlay = document.getElementById('mobileOverlay');
+    function openMobileMenu() { mobilePanel.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobilePanel.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeMobileBtn');
+    if(hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
+    if(closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
+    if(overlay) overlay.addEventListener('click', closeMobileMenu);
+    
+    window.toggleMobileSubmenu = function(id) { const el = document.getElementById(id); if(el) el.classList.toggle('open'); };
+    
+    const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+    const mobileDirBtn = document.getElementById('mobileDirBtn');
+    if(mobileThemeBtn) mobileThemeBtn.addEventListener('click', () => { toggleThemeGlobal(); closeMobileMenu(); });
+    if(mobileDirBtn) mobileDirBtn.addEventListener('click', () => { toggleDirectionGlobal(); closeMobileMenu(); });
+    
+    const savedTheme = localStorage.getItem('nexusTheme');
+    if(savedTheme === 'dark') { isDark = true; applyTheme(); }
+    
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); }); }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+    
+    const counters = document.querySelectorAll('[data-count]');
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-count'));
+                let current = 0;
+                const increment = target / 50;
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) { el.innerText = Math.floor(current); requestAnimationFrame(updateCounter); } 
+                    else { el.innerText = target; }
+                };
+                updateCounter();
+                countObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => countObserver.observe(counter));
+    
+    // Call the function to highlight Home button
+    setActiveHomeButton();
+</script>
+</body>
+</html>

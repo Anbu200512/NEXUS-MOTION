@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>NEXUS MOTION | Freelance Video Editor & Motion Graphics Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366',
+                        secondary: '#6C63FF',
+                        accent: '#FFB347',
+                        softPink: '#FFF0F3',
+                        darkBg: '#0A0A0F',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.2s ease;
+            padding-top: 72px;
+        }
+        
+        /* Smooth Font Weights */
+        h1, h2, h3, h4, .heading {
+            font-weight: 600 !important;
+            letter-spacing: -0.02em;
+        }
+        p, .subheading, .text-body, .description {
+            font-weight: 400 !important;
+            line-height: 1.6;
+        }
+        
+        /* Gradient Text Definition */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* Heading First Part - Light Mode Black, Dark Mode White */
+        .heading-first {
+            color: #1F2937;
+        }
+        body.dark .heading-first {
+            color: #FFFFFF;
+        }
+        
+        body.dark {
+            background: #000000;
+            color: #E5E7EB;
+        }
+        body.dark .bg-white { background-color: #0A0A0A !important; }
+        body.dark .bg-gray-50, body.dark .bg-gray-100 { background-color: #111111 !important; }
+        body.dark .bg-softPink { background-color: #0F0F0F !important; }
+        body.dark .border-gray-200, body.dark .border-gray-100 { border-color: #1A1A1A !important; }
+        body.dark .text-gray-600, body.dark .text-gray-500 { color: #9CA3AF !important; }
+        body.dark .project-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .project-card:hover { border-color: #FF3366 !important; background: #0F0F0F !important; }
+        body.dark .toolkit-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .toolkit-card:hover { border-color: #FF3366 !important; background: #0F0F0F !important; }
+        body.dark .software-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .software-card:hover { border-color: #FF3366 !important; background: #0F0F0F !important; }
+        body.dark .metric-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .metric-card:hover { border-color: #FF3366 !important; background: #0F0F0F !important; }
+        body.dark .testimonial-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .testimonial-card:hover { border-color: #FF3366 !important; background: #0F0F0F !important; }
+        body.dark .inquiry-form { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .inquiry-form input, body.dark .inquiry-form select, body.dark .inquiry-form textarea { background-color: #111111 !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .navbar { background: rgba(0, 0, 0, 0.98) !important; border-bottom-color: #1A1A1A !important; }
+        body.dark .dropdown-menu { background: #0F0F0F !important; border-color: #1A1A1A !important; }
+        body.dark .dropdown-item { color: #E5E7EB !important; }
+        body.dark .mobile-menu { background: #000000 !important; }
+        body.dark .mobile-nav-link { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .mobile-submenu a { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .footer { background-color: #000000 !important; border-top-color: #FF3366 !important; }
+        body.dark .icon-btn { background: #111111 !important; border-color: #1A1A1A !important; color: #9CA3AF !important; }
+        body.dark .icon-btn:hover { background: #FF3366 !important; color: white !important; border-color: #FF3366 !important; }
+        body.dark .behind-scenes-card { background-color: #0F0F0F !important; border-color: #1A1A1A !important; }
+        
+        /* Logo Styles */
+        .logo-wrapper, .footer-logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .logo-icon, .footer-logo-icon {
+            display: inline-block;
+            color: #FF3366;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .logo-text, .footer-logo-text {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        @media (min-width: 1280px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.8rem; }
+            .logo-text, .footer-logo-text { font-size: 1.4rem; }
+        }
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.5rem; }
+            .logo-text, .footer-logo-text { font-size: 1.2rem; }
+        }
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        @media (max-width: 767px) {
+            .logo-icon, .footer-logo-icon { font-size: 1.2rem; }
+            .logo-text, .footer-logo-text { font-size: 0.95rem; }
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+        }
+        @media (max-width: 768px) { .nav-container { padding: 0.6rem 1rem; } }
+        .nav-link {
+            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            background: transparent;
+            white-space: nowrap;
+            color: #1F2937;
+        }
+        body.dark .nav-link { color: #E5E7EB; }
+        @media (min-width: 1200px) { .nav-link { font-size: 14px; padding: 8px 16px; } }
+        .nav-link:hover, .nav-link.active { background: #FF3366; color: white !important; }
+        
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            margin-top: 8px;
+            min-width: 160px;
+            background: white;
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15);
+            border: 1px solid #E5E7EB;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #1F2937;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover { background: #FF3366; color: white !important; }
+        
+        .auth-btn {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            color: white;
+            padding: 7px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @media (min-width: 1200px) { .auth-btn { padding: 8px 18px; font-size: 13px; } }
+        .auth-btn-outline { background: transparent; border: 1px solid #FF3366; color: #FF3366; }
+        .auth-btn-outline:hover { background: #FF3366; color: white; }
+        
+        .icon-btn {
+            width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB; flex-shrink: 0;
+            color: #1F2937;
+        }
+        @media (min-width: 1200px) { .icon-btn { width: 38px; height: 38px; } }
+        .icon-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FF3366;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .mobile-menu-btn:hover { background: #e02e5a; transform: scale(1.05); }
+        
+        @media (max-width: 1024px) {
+            .desktop-nav-links { display: none !important; }
+            .desktop-auth-buttons { display: none !important; }
+            .mobile-menu-btn { display: flex !important; }
+            body { padding-top: 68px; }
+        }
+        @media (min-width: 1025px) {
+            .desktop-nav-links { display: flex !important; }
+            .desktop-auth-buttons { display: flex !important; }
+            .mobile-menu-btn { display: none !important; }
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4); z-index: 1999; opacity: 0; visibility: hidden; transition: 0.25s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-menu {
+            position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 380px;
+            background: #FFFFFF; z-index: 2000; transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+        }
+        body.dark .mobile-menu { background: #000000; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .mobile-nav-link {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 18px; margin: 6px 0; border-radius: 18px;
+            font-weight: 500;
+            font-size: 15px; background: #F9FAFB;
+            border: 1px solid #E5E7EB; width: 100%; cursor: pointer; color: #1F2937;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        body.dark .mobile-nav-link { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-nav-link:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .mobile-submenu {
+            margin-left: 18px; padding-left: 16px; border-left: 2px solid #FF3366; display: none;
+        }
+        .mobile-submenu.open { display: block; }
+        .mobile-submenu a {
+            display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 6px 0;
+            border-radius: 16px; font-weight: 500;
+            font-size: 14px; text-decoration: none;
+            background: #FFFFFF; border: 1px solid #E5E7EB; color: #374151; transition: all 0.2s;
+        }
+        body.dark .mobile-submenu a { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .mobile-submenu a:hover { background: #FF3366; color: white !important; transform: translateX(5px); }
+        .control-btn {
+            background: #F3F4F6; border: 1px solid #E5E7EB; padding: 12px; border-radius: 16px;
+            font-weight: 500;
+            transition: 0.2s; cursor: pointer; width: 100%; text-align: center;
+        }
+        body.dark .control-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        .control-btn:hover { background: #FF3366; color: white; }
+        .close-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: #F3F4F6; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB;
+        }
+        .close-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        body.dark .close-btn { background: #0F0F0F; border-color: #1A1A1A; color: #E5E7EB; }
+        body.dark .close-btn:hover { background: #FF3366; color: white; }
+        
+        /* Cards */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            background: #FFFFFF;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(255,51,102,0.25);
+            border-color: #FF3366;
+        }
+        .project-card img { transition: transform 0.5s ease; width: 100%; height: 220px; object-fit: cover; }
+        .project-card:hover img { transform: scale(1.05); }
+        
+        .toolkit-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .toolkit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(255,51,102,0.3);
+            border-color: #FF3366;
+        }
+        
+        .software-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(255,51,102,0.3);
+            border-color: #FF3366;
+        }
+        
+        .metric-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF3366;
+        }
+        
+        .testimonial-card {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: #FF3366;
+        }
+        
+        .video-thumbnail {
+            position: relative; border-radius: 28px; overflow: hidden; cursor: pointer; transition: all 0.3s;
+            border: 1px solid #E5E7EB;
+        }
+        .video-thumbnail:hover { transform: scale(1.02); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2); border-color: #FF3366; }
+        .play-icon-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 70px; height: 70px; background: rgba(255,51,102,0.9); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+        }
+        .video-thumbnail:hover .play-icon-overlay { width: 80px; height: 80px; background: #FF3366; }
+        
+        .hero-image-container {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+        .image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+            padding: 10px 16px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .fade-up { opacity: 0; transform: translateY(25px); transition: all 0.7s ease; }
+        .fade-up.reveal { opacity: 1; transform: translateY(0); }
+        
+        [dir="rtl"] .mobile-menu { right: auto; left: 0; transform: translateX(-100%); }
+        [dir="rtl"] .mobile-menu.open { transform: translateX(0); }
+        [dir="rtl"] .dropdown-menu { right: 0; left: auto; }
+        .bg-softPink { background-color: #FFF0F3; }
+        
+        .footer {
+            background-color: #FFFFFF;
+            border-top: 2px solid #FF3366;
+        }
+        body.dark .footer { background-color: #000000; }
+        .footer-link { transition: color 0.2s ease; text-decoration: none; }
+        .footer-link:hover { color: #FF3366; }
+        .footer-heading { color: #FF3366; font-weight: 600; }
+        
+        .hero-stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+        }
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .behind-scenes-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .behind-scenes-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF3366;
+            box-shadow: 0 20px 30px -12px rgba(255,51,102,0.2);
+        }
+        
+        @media (max-width: 640px) {
+            .project-card img { height: 180px; }
+            .toolkit-card { padding: 1rem; }
+            .toolkit-card i { font-size: 2rem; }
+            .toolkit-card p { font-size: 1.2rem; }
+            .metric-card { padding: 1rem; }
+            .testimonial-card { padding: 1rem; }
+            .image-badge span { font-size: 10px; }
+            .avatar { width: 30px; height: 30px; font-size: 10px; }
+        }
+
+        /* Active dropdown item styling */
+.dropdown-item.active {
+    background: #FF3366 !important;
+    color: white !important;
+}
+
+.dropdown-item.active i {
+    color: white !important;
+}
+
+/* Active dropdown button styling */
+.dropdown .nav-link.active {
+    background: #FF3366 !important;
+    color: white !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="flex items-center justify-between gap-3">
+                <a href="index.html" class="logo-wrapper">
+                    <i class="fas fa-film logo-icon"></i>
+                    <span class="logo-text">NEXUS MOTION</span>
+                </a>
+                
+                <div class="desktop-nav-links items-center gap-1">
+                    <div class="dropdown">
+                        <button class="nav-link flex items-center gap-1">Home <i class="fas fa-chevron-down text-xs"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="demoreel.html" class="nav-link">Demo Reel</a>
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="expertise.html" class="nav-link">Expertise</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="desktop-auth-buttons items-center gap-2">
+                    <button onclick="toggleThemeGlobal()" class="icon-btn"><i class="fas fa-moon"></i></button>
+                    <button onclick="toggleDirectionGlobal()" class="icon-btn"><i class="fas fa-arrow-right-arrow-left"></i></button>
+                    <a href="login.html" class="auth-btn auth-btn-outline">Login</a>
+                    <a href="signup.html" class="auth-btn">Sign Up</a>
+                </div>
+                
+                <button id="hamburgerBtn" class="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenuPanel">
+        <div class="mobile-header">
+            <a href="index.html" class="logo-wrapper" onclick="closeMobileMenu()">
+                <i class="fas fa-film logo-icon"></i>
+                <span class="logo-text">NEXUS MOTION</span>
+            </a>
+            <button id="closeMobileBtn" class="close-btn">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="px-5 pb-5">
+            <div class="flex flex-col gap-2">
+                <div>
+                    <div class="mobile-nav-link" onclick="toggleMobileSubmenu('homeSubmenu')">
+                        <span>HOME</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div id="homeSubmenu" class="mobile-submenu">
+                        <a href="index.html" onclick="closeMobileMenu()">Home 1</a>
+                        <a href="home2.html" onclick="closeMobileMenu()">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>About</span><i class="fas fa-arrow-right"></i></a>
+                <a href="demoreel.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Demo Reel</span><i class="fas fa-arrow-right"></i></a>
+                <a href="portfolio.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Portfolio</span><i class="fas fa-arrow-right"></i></a>
+                <a href="expertise.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Expertise</span><i class="fas fa-arrow-right"></i></a>
+                <a href="contact.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Contact</span><i class="fas fa-arrow-right"></i></a>
+                <div class="mt-3 pt-2 border-t border-gray-200 dark:border-gray-800">
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="login.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Login</span></a>
+                        <a href="signup.html" class="mobile-nav-link justify-center" onclick="closeMobileMenu()"><span>Sign Up</span></a>
+                    </div>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button id="mobileThemeBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-moon"></i> Theme</button>
+                    <button id="mobileDirBtn" class="control-btn flex items-center justify-center gap-2"><i class="fas fa-arrow-right-arrow-left"></i> RTL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="homeSection" class="py-16 pb-20 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div class="fade-up">
+                    <div class="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-1.5 text-sm font-semibold text-primary mb-5">Video Editor & Motion Designer</div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5">
+                        <span class="heading-first">Crafting Stories That</span>
+                        <span class="gradient-text"> Move</span>
+                    </h1>
+                    <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">Professional video editing & motion graphics — from raw footage to cinematic masterpieces. 500+ projects delivered worldwide.</p>
+                    
+                    <div class="hero-buttons flex flex-wrap gap-3 sm:gap-4 mb-6">
+                        <a href="#contact" class="btn bg-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold shadow-lg flex items-center gap-2 text-sm sm:text-base">Start Project</a>
+                        <a href="#reel" class="btn border border-gray-300 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold hover:bg-gray-50 transition text-sm sm:text-base">Watch Showreel</a>
+                    </div>
+                    
+                    <div class="hero-stats-container">
+                        <div class="flex items-center gap-2">
+                            <div class="flex -space-x-2 avatar-group">
+                                <div class="avatar bg-primary text-white border-2 border-white">MJ</div>
+                                <div class="avatar bg-secondary text-white border-2 border-white">SC</div>
+                                <div class="avatar bg-accent text-white border-2 border-white">AR</div>
+                                <div class="avatar bg-gray-400 text-white border-2 border-white text-xs">24</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="text-left">
+                                <div class="flex items-baseline gap-1">
+                                    <span class="stats-number text-xl sm:text-2xl font-bold text-primary">24</span>
+                                    <span class="text-xs sm:text-sm text-gray-500">plus</span>
+                                </div>
+                                <p class="text-xs text-gray-500">active collaborations</p>
+                            </div>
+                            <div class="w-px h-6 sm:h-8 bg-gray-300"></div>
+                            <div class="text-left">
+                                <p class="text-xs text-gray-500">this week</p>
+                                <p class="text-xs sm:text-sm font-semibold text-primary flex items-center gap-1">12% growth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up hero-image-container">
+                    <img src="images/hero1.avif" alt="Professional editing suite" class="w-full h-auto rounded-3xl">
+                    <div class="image-badge">
+                        <span class="text-white text-xs sm:text-sm font-semibold">500+ Projects</span>
+                        <span class="text-white text-xs sm:text-sm">4.97 out of 5 Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Reel Section -->
+    <section id="reel" class="py-12 sm:py-14 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="fade-up">
+                    <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">2025 Showreel</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mt-3 mb-4">
+                        <span class="heading-first">Cinematic</span>
+                        <span class="gradient-text"> Motion Reel</span>
+                    </h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Watch our latest compilation of cinematic edits, motion graphics, and brand storytelling. A showcase of our finest work from 2024-2025.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex items-center gap-2 text-sm">2 minutes</div>
+                        <div class="flex items-center gap-2 text-sm">4K Quality</div>
+                        <div class="flex items-center gap-2 text-sm">12 Projects Featured</div>
+                    </div>
+                </div>
+                <div class="fade-up video-thumbnail">
+                    <img src="images/h5.jpg" alt="Video thumbnail" class="w-full rounded-3xl">
+                    <div class="play-icon-overlay"><i class="fas fa-play text-white text-xl sm:text-2xl ml-1"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section id="portfolio" class="py-16 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-white/80 px-3 py-1 rounded-full">Featured Work</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Recent</span>
+                    <span class="gradient-text"> Edits</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">Explore our latest cinematic projects and creative collaborations</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="project-card bg-white overflow-hidden"><img src="images/h1.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Vivid Drinks</h3><p class="text-gray-500 text-sm">Brand Anthem - Commercial</p><div class="flex mt-2 text-primary text-xs">3 days turnaround</div></div></div>
+                <div class="project-card bg-white overflow-hidden"><img src="images/q1.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Fashion Week 2025</h3><p class="text-gray-500 text-sm">Fashion Film - Retro Glitch</p><div class="flex mt-2 text-primary text-xs">48h express</div></div></div>
+                <div class="project-card bg-white overflow-hidden"><img src="images/h2.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Tech Summit 2024</h3><p class="text-gray-500 text-sm">Kinetic Typography - Motion GFX</p><div class="flex mt-2 text-primary text-xs">4 days</div></div></div>
+                <div class="project-card bg-white overflow-hidden"><img src="images/q2.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Global Innovation</h3><p class="text-gray-500 text-sm">Corporate - Documentary Style</p><div class="flex mt-2 text-primary text-xs">5 days</div></div></div>
+                <div class="project-card bg-white overflow-hidden"><img src="images/h8.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">Luxury Collection</h3><p class="text-gray-500 text-sm">Fashion - Slow Motion Cinematic</p><div class="flex mt-2 text-primary text-xs">6 days</div></div></div>
+                <div class="project-card bg-white overflow-hidden"><img src="images/q4.jpg" class="h-56 w-full object-cover"><div class="p-4"><h3 class="text-lg font-semibold mb-1">FinTech Explainer</h3><p class="text-gray-500 text-sm">2D Animation - Motion Graphics</p><div class="flex mt-2 text-primary text-xs">4 days</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes Section - 2 Images -->
+    <section class="py-16 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Behind the Scenes</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Our Creative</span>
+                    <span class="gradient-text"> Process</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">A glimpse into our studio and editing workflow</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="behind-scenes-card group">
+                    <img src="images/a1.jpg" alt="Editing Suite" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Professional Editing Suite</h3>
+                        <p class="text-gray-500 text-sm">State-of-the-art workspace for cinematic editing</p>
+                    </div>
+                </div>
+                <div class="behind-scenes-card group">
+                    <img src="images/a2.jpg" alt="Motion Graphics Studio" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-1">Motion Graphics Studio</h3>
+                        <p class="text-gray-500 text-sm">Where creativity meets technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-16 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Toolkit</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Industry-Standard</span>
+                    <span class="gradient-text"> Software</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">Professional tools we use to bring your vision to life</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-5">
+                    <div class="software-card">
+                        <h3 class="text-lg font-semibold mb-3 text-primary">Professional Tools</h3>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="bg-gray-50 px-3 py-1.5 rounded-full text-xs border border-gray-200">Premiere Pro</span>
+                            <span class="bg-gray-50 px-3 py-1.5 rounded-full text-xs border border-gray-200">After Effects</span>
+                            <span class="bg-gray-50 px-3 py-1.5 rounded-full text-xs border border-gray-200">DaVinci Resolve</span>
+                            <span class="bg-gray-50 px-3 py-1.5 rounded-full text-xs border border-gray-200">Cinema 4D</span>
+                        </div>
+                    </div>
+                    <div class="software-card">
+                        <h4 class="flex gap-2 text-base text-primary justify-center mb-3">Delivery Estimates</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-gray-50 p-2 rounded-xl border border-gray-200"><span class="text-xs">Social Reel</span><p class="text-primary text-sm mt-1">1-2 days</p></div>
+                            <div class="bg-gray-50 p-2 rounded-xl border border-gray-200"><span class="text-xs">Corporate</span><p class="text-primary text-sm mt-1">3-5 days</p></div>
+                            <div class="bg-gray-50 p-2 rounded-xl border border-gray-200"><span class="text-xs">Motion GFX</span><p class="text-primary text-sm mt-1">4-6 days</p></div>
+                            <div class="bg-gray-50 p-2 rounded-xl border border-gray-200"><span class="text-xs">Rush Order</span><p class="text-primary text-sm mt-1">24-48h</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="toolkit-card"><i class="fas fa-video text-3xl text-primary mb-2"></i><p class="text-xl font-bold">150+</p><p class="text-xs text-gray-500">Edits Completed</p></div>
+                    <div class="toolkit-card"><i class="fas fa-star text-3xl text-accent mb-2"></i><p class="text-xl font-bold">97%</p><p class="text-xs text-gray-500">Satisfaction</p></div>
+                    <div class="toolkit-card"><i class="fas fa-clock text-3xl text-secondary mb-2"></i><p class="text-xl font-bold">98%</p><p class="text-xs text-gray-500">On-Time Delivery</p></div>
+                    <div class="toolkit-card"><i class="fas fa-globe text-3xl text-primary mb-2"></i><p class="text-xl font-bold">25+</p><p class="text-xs text-gray-500">Countries Served</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="metrics" class="py-16 px-5 sm:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-white/80 px-3 py-1 rounded-full">Performance</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">Impact by</span>
+                    <span class="gradient-text"> Numbers</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">Metrics that showcase our commitment to excellence</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                <div class="metric-card text-center"><i class="fas fa-video text-3xl text-primary mb-2"></i><p class="text-2xl font-bold text-primary">250+</p><p class="text-xs text-gray-500">Videos Edited</p></div>
+                <div class="metric-card text-center"><i class="fas fa-chart-line text-3xl text-secondary mb-2"></i><p class="text-2xl font-bold text-secondary">50M+</p><p class="text-xs text-gray-500">Total Views</p></div>
+                <div class="metric-card text-center"><i class="fas fa-users text-3xl text-accent mb-2"></i><p class="text-2xl font-bold text-accent">85+</p><p class="text-xs text-gray-500">Happy Clients</p></div>
+                <div class="metric-card text-center"><i class="fas fa-trophy text-3xl text-primary mb-2"></i><p class="text-2xl font-bold text-primary">12</p><p class="text-xs text-gray-500">Awards Won</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="success" class="py-16 px-5 sm:px-8 bg-softPink">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-primary font-semibold text-xs bg-primary/10 px-3 py-1 rounded-full">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                    <span class="heading-first">What Clients</span>
+                    <span class="gradient-text"> Say</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mt-2">Trusted by creators and brands worldwide</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="testimonial-card p-5"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3 leading-relaxed">"Transformed our footage into a masterpiece! Incredible turnaround and attention to detail."</p><div class="flex items-center gap-3 mt-3"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-8 h-8 rounded-full object-cover"><div><div class="font-semibold text-sm">Sarah Chen</div><div class="text-xs text-gray-500">Creative Director</div></div></div></div>
+                <div class="testimonial-card p-5"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3 leading-relaxed">"Best motion graphics I've ever commissioned. Top-notch quality and fast delivery."</p><div class="flex items-center gap-3 mt-3"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full object-cover"><div><div class="font-semibold text-sm">Michael Torres</div><div class="text-xs text-gray-500">Summit Organizer</div></div></div></div>
+                <div class="testimonial-card p-5"><div class="flex text-primary mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-sm mb-3 leading-relaxed">"Delivered ahead of schedule! The viral metrics speak for themselves. Will definitely work again."</p><div class="flex items-center gap-3 mt-3"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-8 h-8 rounded-full object-cover"><div><div class="font-semibold text-sm">Emma Watson</div><div class="text-xs text-gray-500">Brand Owner</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="contact" class="py-16 px-5 sm:px-8 bg-white">
+        <div class="max-w-4xl mx-auto inquiry-form bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">
+                <span class="heading-first">Start Your</span>
+                <span class="gradient-text"> Project</span>
+            </h2>
+            <p class="text-center text-gray-500 mb-6">Tell us about your vision — we'll respond within 24 hours</p>
+            <form id="inquiryForm" class="grid md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Full name" id="name" required class="p-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-primary text-sm">
+                <input type="email" placeholder="Email" id="email" required class="p-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:border-primary text-sm">
+                <select id="projectType" class="p-3 rounded-xl border border-gray-200 bg-gray-50 text-sm"><option>Social Media Ads</option><option>Brand Film</option><option>Motion Graphics</option><option>Corporate Video</option></select>
+                <select id="timeline" class="p-3 rounded-xl border border-gray-200 bg-gray-50 text-sm"><option>Standard (3-5 days)</option><option>Express (1-2 days)</option><option>Rush (24 hours)</option></select>
+                <textarea rows="3" placeholder="Project brief..." id="message" class="md:col-span-2 p-3 rounded-xl border border-gray-200 bg-gray-50 text-sm"></textarea>
+                <button type="submit" class="md:col-span-2 bg-primary text-white py-3 rounded-xl font-semibold text-sm">Send Inquiry</button>
+                <p id="formFeedback" class="md:col-span-2 text-center text-xs"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div><a href="index.html" class="footer-logo-wrapper"><i class="fas fa-film footer-logo-icon"></i><span class="footer-logo-text">NEXUS MOTION</span></a><p class="text-sm text-gray-500 mt-3">Freelance video editor & motion designer crafting cinematic stories.</p><div class="flex gap-3 mt-4"><i class="fab fa-instagram text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-vimeo text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i><i class="fab fa-linkedin-in text-gray-400 hover:text-primary cursor-pointer text-lg transition footer-link"></i></div></div>
+                <div><h4 class="footer-heading mb-3">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="demoreel.html" class="text-gray-500 hover:text-primary transition footer-link">Demo Reel</a></li><li><a href="portfolio.html" class="text-gray-500 hover:text-primary transition footer-link">Portfolio</a></li><li><a href="expertise.html" class="text-gray-500 hover:text-primary transition footer-link">Expertise</a></li><li><a href="contact.html" class="text-gray-500 hover:text-primary transition footer-link">Contact</a></li></ul></div>
+                <div><h4 class="footer-heading mb-3">Services</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">Video Editing</li><li class="text-gray-500">Motion Graphics</li><li class="text-gray-500">Color Grading</li></ul></div>
+                <div><h4 class="footer-heading mb-3">Contact</h4><ul class="space-y-2 text-sm"><li class="text-gray-500">hello@nexusmotion.com</li><li class="text-gray-500">Mon-Fri: 9AM - 8PM</li><li class="text-gray-500">Remote Worldwide</li></ul></div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400"><p>© 2025 NEXUS MOTION — All rights reserved</p><div class="flex gap-4 mt-2 md:mt-0"><a href="#" class="hover:text-primary transition footer-link">Privacy</a><a href="#" class="hover:text-primary transition footer-link">Terms</a></div></div>
+        </div>
+    </footer>
+
+    <script>
+    let isDark = false;
+    function applyTheme() { if(isDark) document.body.classList.add('dark'); else document.body.classList.remove('dark'); }
+    function toggleThemeGlobal() { isDark = !isDark; localStorage.setItem('nexusTheme', isDark ? 'dark' : 'light'); applyTheme(); }
+    function toggleDirectionGlobal() { const newDir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; document.documentElement.dir = newDir; }
+    function openYouTubeVideo() { window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); }
+    
+    // Set active state for navigation links
+    function setActiveNavLinks() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Handle regular nav links
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown .nav-link)');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Handle Home dropdown items
+        const homeDropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item');
+        homeDropdownItems.forEach(item => {
+            const href = item.getAttribute('href');
+            if (href === currentPage) {
+                item.classList.add('active');
+                // Also highlight the dropdown button
+                const dropdownBtn = document.querySelector('.dropdown > .nav-link');
+                if (dropdownBtn) {
+                    dropdownBtn.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    const mobilePanel = document.getElementById('mobileMenuPanel');
+    const overlay = document.getElementById('mobileOverlay');
+    function openMobileMenu() { mobilePanel.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobilePanel.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeMobileBtn');
+    if(hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
+    if(closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
+    if(overlay) overlay.addEventListener('click', closeMobileMenu);
+    
+    window.toggleMobileSubmenu = function(id) { const el = document.getElementById(id); if(el) el.classList.toggle('open'); };
+    
+    const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+    const mobileDirBtn = document.getElementById('mobileDirBtn');
+    if(mobileThemeBtn) mobileThemeBtn.addEventListener('click', () => { toggleThemeGlobal(); closeMobileMenu(); });
+    if(mobileDirBtn) mobileDirBtn.addEventListener('click', () => { toggleDirectionGlobal(); closeMobileMenu(); });
+    
+    const savedTheme = localStorage.getItem('nexusTheme');
+    if(savedTheme === 'dark') { isDark = true; applyTheme(); }
+    
+    document.getElementById('inquiryForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('formFeedback').innerHTML = '<span class="text-primary">Inquiry sent! We will respond within 12 hours.</span>';
+        e.target.reset();
+        setTimeout(() => document.getElementById('formFeedback').innerHTML = '', 3000);
+    });
+    
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); }); }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+    
+    // Call function to set active nav links
+    setActiveNavLinks();
+</script>
+</body>
+</html>

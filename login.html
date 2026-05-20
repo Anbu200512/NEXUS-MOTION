@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Login | NEXUS MOTION - Video Editing Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366',
+                        secondary: '#6C63FF',
+                        accent: '#FFB347',
+                        softPink: '#FFF0F3',
+                        darkBg: '#0A0A0F',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.2s ease;
+            min-height: 100vh;
+        }
+        
+        /* Smooth Font Weights */
+        h1, h2, h3, h4, .heading {
+            font-weight: 600 !important;
+            letter-spacing: -0.02em;
+        }
+        p, .subheading, .text-body, .description {
+            font-weight: 400 !important;
+            line-height: 1.5;
+        }
+        
+        /* Gradient Text Definition */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .heading-first {
+            color: #1F2937;
+        }
+        body.dark .heading-first {
+            color: #FFFFFF;
+        }
+        
+        /* Dark Mode */
+        body.dark {
+            background: #000000;
+            color: #E5E7EB;
+        }
+        body.dark .login-card { background-color: #0A0A0A !important; border-color: #1A1A1A !important; }
+        body.dark .input-field { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .input-field:focus { border-color: #FF3366 !important; }
+        body.dark .divider { border-color: #1A1A1A !important; }
+        body.dark .social-btn { background: #0F0F0F !important; border-color: #1A1A1A !important; color: #E5E7EB !important; }
+        body.dark .social-btn:hover { background: #FF3366 !important; color: white !important; }
+        body.dark .navbar { background: rgba(0, 0, 0, 0.98) !important; border-bottom-color: #1A1A1A !important; }
+        body.dark .icon-btn { background: #111111 !important; border-color: #1A1A1A !important; color: #9CA3AF !important; }
+        body.dark .icon-btn:hover { background: #FF3366 !important; color: white !important; border-color: #FF3366 !important; }
+        
+        /* Logo Styles */
+        .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .logo-icon {
+            display: inline-block;
+            color: #FF3366;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .logo-text {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        @media (min-width: 1280px) {
+            .logo-icon { font-size: 1.8rem; }
+            .logo-text { font-size: 1.4rem; }
+        }
+        @media (max-width: 1279px) and (min-width: 1024px) {
+            .logo-icon { font-size: 1.5rem; }
+            .logo-text { font-size: 1.2rem; }
+        }
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-icon { font-size: 1.2rem; }
+            .logo-text { font-size: 0.95rem; }
+        }
+        @media (max-width: 767px) {
+            .logo-icon { font-size: 1.2rem; }
+            .logo-text { font-size: 0.95rem; }
+        }
+        
+        /* Navbar - Only Logo + Theme/RTL Icons */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+        }
+        @media (max-width: 768px) { .nav-container { padding: 0.6rem 1rem; } }
+        
+        .icon-btn {
+            width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6;
+            display: inline-flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s; border: 1px solid #E5E7EB; flex-shrink: 0;
+            color: #1F2937;
+        }
+        @media (min-width: 1200px) { .icon-btn { width: 38px; height: 38px; } }
+        .icon-btn:hover { background: #FF3366; color: white; border-color: #FF3366; }
+        
+        /* Login Form Styles */
+        .login-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 28px;
+            padding: 40px 36px;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        @media (max-width: 640px) {
+            .login-card { padding: 28px 20px; }
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #E5E7EB;
+            border-radius: 20px;
+            background: #FFFFFF;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #FF3366;
+            box-shadow: 0 0 0 3px rgba(255,51,102,0.1);
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,51,102,0.3);
+        }
+        
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            color: #1F2937;
+            font-size: 20px;
+        }
+        .social-btn:hover { background: #FF3366; color: white; border-color: #FF3366; transform: translateY(-2px); }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 12px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .divider::before { margin-right: 1em; }
+        .divider::after { margin-left: 1em; }
+        
+        .fade-up { opacity: 0; transform: translateY(25px); transition: all 0.7s ease; }
+        .fade-up.reveal { opacity: 1; transform: translateY(0); }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-form { animation: fadeIn 0.6s ease forwards; }
+        
+        /* Right Side - Desktop only */
+        .right-side {
+            background: linear-gradient(135deg, #FF3366, #6C63FF);
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/a1.jpg') no-repeat center center;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 0;
+        }
+        
+        /* Hide right side completely on mobile/tablet */
+        @media (max-width: 1023px) {
+            .right-side {
+                display: none !important;
+            }
+            .login-card {
+                max-width: 100%;
+                border-radius: 28px;
+            }
+        }
+        
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        
+        @media (max-width: 640px) {
+            .main-container {
+                padding-top: 70px;
+                padding-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar - Only Logo + Theme/RTL Icons -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="logo-wrapper">
+                    <i class="fas fa-film logo-icon"></i>
+                    <span class="logo-text">NEXUS MOTION</span>
+                </a>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleThemeGlobal()" class="icon-btn" id="themeToggleBtn"><i class="fas fa-moon"></i></button>
+                    <button onclick="toggleDirectionGlobal()" class="icon-btn" id="rtlToggleBtn"><i class="fas fa-arrow-right-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content - Split Layout (Right side hidden on mobile) -->
+    <div class="main-container px-5 sm:px-8">
+        <div class="max-w-6xl w-full mx-auto">
+            <div class="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Left Side - Login Form -->
+                <div class="login-card animate-form rounded-r-none lg:rounded-r-none">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lock-open text-2xl text-primary"></i>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold">
+                            <span class="heading-first">Welcome</span>
+                            <span class="gradient-text"> Back</span>
+                        </h2>
+                        <p class="text-gray-500 text-sm mt-1">Sign in to your account</p>
+                    </div>
+                    
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
+                            <input type="email" id="email" class="input-field" placeholder="hello@nexusmotion.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Password</label>
+                            <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+                        </div>
+                        <div class="flex items-center justify-between mb-6">
+                            <label class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="text-sm text-primary hover:underline" onclick="showForgotAlert(); return false;">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="login-btn">Sign In</button>
+                    </form>
+                    
+                    <div class="divider my-6">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <div class="flex justify-center gap-3 mb-6">
+                        <button onclick="showSocialAlert('Google')" class="social-btn"><i class="fab fa-google"></i></button>
+                        <button onclick="showSocialAlert('Facebook')" class="social-btn"><i class="fab fa-facebook-f"></i></button>
+                        <button onclick="showSocialAlert('Apple')" class="social-btn"><i class="fab fa-apple"></i></button>
+                    </div>
+                    
+                    <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                        Don't have an account? 
+                        <a href="#" onclick="showSignupAlert(); return false;" class="text-primary font-semibold hover:underline">Sign up</a>
+                    </p>
+                    
+                    <p class="text-center text-xs text-gray-400 mt-4">
+                        Demo: use any email & password
+                    </p>
+                </div>
+                
+                <!-- Right Side - Desktop only (hidden on mobile) -->
+                <div class="right-side flex flex-col items-center justify-center text-center p-8 md:p-12 relative z-10 rounded-l-none lg:rounded-l-none">
+                    <div class="relative z-10">
+                        <i class="fas fa-play-circle text-white text-6xl md:text-7xl mb-4 opacity-90"></i>
+                        <h3 class="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-3">Welcome to NEXUS MOTION</h3>
+                        <p class="text-white/80 text-sm md:text-base max-w-sm mx-auto">Access your creative dashboard, manage projects, and collaborate with our team of professional video editors.</p>
+                        <div class="mt-6 flex justify-center gap-6">
+                            <div class="text-center">
+                                <p class="text-white text-xl md:text-2xl font-bold">500+</p>
+                                <p class="text-white/70 text-xs">Projects</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white text-xl md:text-2xl font-bold">128</p>
+                                <p class="text-white/70 text-xs">Clients</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white text-xl md:text-2xl font-bold">120M+</p>
+                                <p class="text-white/70 text-xs">Views</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isDark = false;
+        function applyTheme() { if(isDark) document.body.classList.add('dark'); else document.body.classList.remove('dark'); }
+        function toggleThemeGlobal() { isDark = !isDark; localStorage.setItem('nexusTheme', isDark ? 'dark' : 'light'); applyTheme(); }
+        function toggleDirectionGlobal() { const newDir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl'; document.documentElement.dir = newDir; }
+        
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            if(email) {
+                alert(`Welcome back! Demo login successful.\nRedirecting to dashboard...`);
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+        
+        function showForgotAlert() { alert('Password reset link would be sent to your email. (Demo)'); }
+        function showSocialAlert(provider) { alert(`Continue with ${provider} (Demo)`); }
+        function showSignupAlert() { alert('Redirect to sign up page (Demo)'); }
+        
+        const savedTheme = localStorage.getItem('nexusTheme');
+        if(savedTheme === 'dark') { isDark = true; applyTheme(); }
+        
+        // Handle RTL icon
+        if(document.documentElement.dir === 'rtl') {
+            const rtlIcon = document.querySelector('#rtlToggleBtn i');
+            if(rtlIcon) rtlIcon.className = 'fas fa-arrow-left';
+        }
+        
+        // Fade animation
+        const loginCard = document.querySelector('.login-card');
+        if(loginCard) { setTimeout(() => { loginCard.classList.add('reveal'); }, 100); }
+        
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
